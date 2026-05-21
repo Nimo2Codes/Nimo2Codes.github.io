@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nimo2Codes Portfolio</title>
+    <meta charset="UTF-8">
+    <title>Nimo Codes Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
       body {
         background-color: #0a0c10;
         color: white;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+        font-family: 'Syne', sans-serif;
       }
 
       nav {
         background-color: #10141c;
-        padding: 20px 40px;
+        padding: 20px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #222;
+        border-bottom: 1px solid #1e2433;
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
 
       nav .logo {
         color: #00e5a0;
-        font-size: 18px;
+        font-family: 'Space Mono', monospace;
+        font-size: 16px;
         font-weight: bold;
       }
 
@@ -30,109 +36,204 @@
         list-style: none;
         display: flex;
         gap: 30px;
-        margin: 0;
-        padding: 0;
       }
 
       nav ul a {
-        color: #aaa;
+        color: #7a8ba0;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s;
       }
 
-      nav ul a:hover {
-        color: #00e5a0;
-      }
+      nav ul a:hover { color: #00e5a0; }
 
       .hero {
-        padding: 100px 40px;
+        padding: 120px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero-tag {
+        font-family: 'Space Mono', monospace;
+        font-size: 12px;
+        color: #00e5a0;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .hero-tag::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: #00e5a0;
       }
 
       .hero h1 {
-        font-size: 48px;
-        color: #00e5a0;
-        margin-bottom: 10px;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        margin-bottom: 24px;
+        max-width: 700px;
       }
 
+      .hero h1 span { color: #00e5a0; }
+
       .hero p {
-        color: #aaa;
-        font-size: 18px;
+        color: #7a8ba0;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 540px;
+        margin-bottom: 40px;
       }
+
+      .hero-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #00e5a0;
+        color: #0a0c10;
+        font-family: 'Space Mono', monospace;
+        font-size: 13px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .hero-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,229,160,0.3);
+      }
+
       .projects {
-        padding: 60px 40px;
+        padding: 80px 60px;
         background-color: #10141c;
       }
 
-      .projects h2 {
+      .projects-inner { max-width: 1200px; margin: 0 auto; }
+
+      .section-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 12px;
         color: #00e5a0;
-        margin-bottom: 30px;
-        font-size: 28px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .projects h2 {
+        color: white;
+        margin-bottom: 48px;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
       }
 
       .cards {
         display: flex;
-        gap: 20px;
+        gap: 1px;
+        background: #1e2433;
       }
 
       .card {
         background-color: #0a0c10;
-        border: 1px solid #222;
-        padding: 30px;
+        padding: 40px 32px;
         flex: 1;
+        border-top: 2px solid transparent;
+        transition: background 0.3s, border-color 0.3s;
+        cursor: pointer;
       }
+
+      .card:nth-child(1) { border-top-color: #00e5a0; }
+      .card:nth-child(2) { border-top-color: #0099ff; }
+      .card:nth-child(3) { border-top-color: #ff6b35; }
+
+      .card:hover { background: #13181f; }
 
       .card h3 {
-        color: #00e5a0;
-        margin-bottom: 10px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
       }
 
+      .card:nth-child(1) h3 { color: #00e5a0; }
+      .card:nth-child(2) h3 { color: #0099ff; }
+      .card:nth-child(3) h3 { color: #ff6b35; }
+
       .card p {
-        color: #aaa;
+        color: #7a8ba0;
         font-size: 14px;
-        margin-bottom: 20px;
+        line-height: 1.8;
+        margin-bottom: 24px;
       }
 
       .card a {
-        color: #00e5a0;
-        font-size: 14px;
+        font-family: 'Space Mono', monospace;
+        font-size: 12px;
         text-decoration: none;
+        letter-spacing: 0.05em;
+        transition: gap 0.2s;
       }
+
+      .card:nth-child(1) a { color: #00e5a0; }
+      .card:nth-child(2) a { color: #0099ff; }
+      .card:nth-child(3) a { color: #ff6b35; }
+
       .contact {
-        padding: 80px 40px;
+        padding: 100px 60px;
         text-align: center;
         background-color: #0a0c10;
       }
 
       .contact h2 {
-        color: #00e5a0;
-        font-size: 28px;
-        margin-bottom: 15px;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
       }
 
       .contact p {
-        color: #aaa;
-        margin-bottom: 30px;
+        color: #7a8ba0;
+        margin-bottom: 40px;
         font-size: 16px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
       }
 
       .contact a {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #00e5a0;
         color: #0a0c10;
-        background-color: #00e5a0;
-        padding: 12px 30px;
-        text-decoration: none;
+        font-family: 'Space Mono', monospace;
+        font-size: 13px;
         font-weight: bold;
-        font-size: 14px;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
 
       .contact a:hover {
-        background-color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,229,160,0.3);
       }
+
       footer {
         text-align: center;
-        padding: 20px;
-        color: #444;
-        font-size: 13px;
-        border-top: 1px solid #222;
+        padding: 24px;
+        color: #2a3344;
+        font-family: 'Space Mono', monospace;
+        font-size: 12px;
+        border-top: 1px solid #1e2433;
       }
     </style>
   </head>
@@ -147,42 +248,50 @@
       </ul>
     </nav>
 
-    <div class="hero">
-      <h1>Hello, I am Nimo</h1>
-      <p>I came from education with a vision for storytelling through tech. 
-        I document my journey through real-world networking projects the way I used to teach step by step, so anyone can follow the work and feel inspired.</p>
+    <div class="hero" id="about">
+      <div class="hero-tag">Networking Portfolio</div>
+      <h1>Hello, I am <span>Nimo</span></h1>
+      <p>I came from education with a vision for storytelling through tech. I document my journey through real-world networking projects the way I used to teach.Step by step, so anyone can follow the work and feel inspired.</p>
+      <a href="#projects" class="hero-btn">View Projects →</a>
     </div>
-<div class="projects" id="projects">
-      <h2>Projects</h2>
-      <div class="cards">
 
-        <div class="card">
-          <h3>Static Deployment</h3>
-          <p>End-to-end static IP setup covering address planning, routing tables and verification.</p>
-<a href="https://github.com/Nimo2Codes/networking-deployment-portfolio/tree/main/static-deployment">View on GitHub →</a>
+    <div class="projects" id="projects">
+      <div class="projects-inner">
+        <div class="section-label">02 / Projects</div>
+        <h2>Deployments</h2>
+        <div class="cards">
+
+          <div class="card">
+            <h3>Static Deployment</h3>
+            <p>End-to-end static IP setup covering address planning, routing tables and verification.</p>
+            <a href="https://github.com/Nimo2Codes/networking-deployment-portfolio/tree/main/static-deployment">View on GitHub →</a>
+          </div>
+
+          <div class="card">
+            <h3>PPPoE Deployment</h3>
+            <p>Full PPPoE walkthrough-server setup, client authentication and session management.</p>
+            <a href="https://github.com/Nimo2Codes/networking-deployment-portfolio/tree/main/pppoe-deployment">View on GitHub →</a>
+          </div>
+
+          <div class="card">
+            <h3>Hotspot Deployment</h3>
+            <p>Captive portal setup with user authentication, bandwidth management and vouchers.</p>
+            <a href="https://github.com/Nimo2Codes/networking-deployment-portfolio/tree/main/Hotspot%20Deployment">View on GitHub →</a>
+          </div>
+
         </div>
-
-        <div class="card">
-          <h3>PPPoE Deployment</h3>
-          <p>Full PPPoE walkthrough-server setup, client authentication and session management.</p>
-          <a href="https://github.com/Nimo2Codes/networking-deployment-portfolio/tree/main/pppoe-deployment">View on GitHub →</a>
-        </div>
-
-        <div class="card">
-          <h3>Hotspot Deployment</h3>
-          <p>Captive portal setup with user authentication, bandwidth management and vouchers.</p>
-          <a href="https://github.com/Nimo2Codes/networking-deployment-portfolio/tree/main/Hotspot%20Deployment">View on GitHub →</a>
-        </div>
-
       </div>
     </div>
+
     <div class="contact" id="contact">
       <h2>Get In Touch</h2>
       <p>Open to networking roles, collaborations and conversations about infrastructure.</p>
       <a href="https://github.com/Nimo2Codes" target="_blank">GitHub Profile →</a>
     </div>
+
     <footer>
-      <p>© 2025 Nimo2Codes-Networking Portfolio</p>
+      <p>©2025 Nimo2Codes Networking Portfolio</p>
     </footer>
+
   </body>
 </html>
