@@ -26,12 +26,25 @@
       }
 
       nav .logo {
-        color: #00e5a0;
-        font-family: 'Space Mono', monospace;
-        font-size: 16px;
-        font-weight: bold;
-      }
+  color: #00e5a0;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
 
+.logo-at {
+  color: #4a5568;
+}
+
+.logo-quote {
+  font-size: 9px;
+  color: #2a3a4a;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+  margin-top: 3px;
+}
       nav ul {
         list-style: none;
         display: flex;
@@ -227,13 +240,19 @@
   <body>
 
     <nav>
-      <div class="logo">Nimo Codes</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <div class="logo">
+    nimo<span class="logo-at">@codes</span>:~$
+    <span class="logo-quote">
+      while (adult === true) { screwUp(); learn(); screwUp_a_little_bit_less(); }
+    </span>
+  </div>
+  <ul>
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
 
     <div class="hero" id="about">
       <div class="hero-tag">Networking Portfolio</div>
